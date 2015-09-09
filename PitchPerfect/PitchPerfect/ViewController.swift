@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var recordingLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +21,17 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    @IBAction func recordAudio(sender: UIButton) {
+        // TODO: - Record user's voice
+        println("in recordAudio: show the recording label");
+        if recordingLabel.hidden==true {
+            recordingLabel.hidden = false
+        } else {
+            recordingLabel.hidden = true
+        }
+    }
+    
+    @IBAction func stopRecording(sender: UIButton) {
+        recordingLabel.hidden = true
+    }
 }
-
