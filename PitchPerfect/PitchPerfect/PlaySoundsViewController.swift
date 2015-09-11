@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    var audioPlayer:AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Get the path of the Music file
+        if var filePath = NSBundle.mainBundle().pathForResource("movie_quote",  ofType: "mp3") {
+            var fileUrl = NSURL.fileURLWithPath(filePath)
+            // Init audio player
+            audioPlayer = AVAudioPlayer( contentsOfURL: fileUrl, error: nil)
+        } else {
+            println("file not found")
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,8 +34,8 @@ class PlaySoundsViewController: UIViewController {
     
 
     @IBAction func slowPlayback(sender: UIButton) {
-        // TODO: playback Audio
         println("in slowPlayback")
+        audioPlayer.play()
     }
     /*
     // MARK: - Navigation
@@ -35,5 +46,4 @@ class PlaySoundsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
