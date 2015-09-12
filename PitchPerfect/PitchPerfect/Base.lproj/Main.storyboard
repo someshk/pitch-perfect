@@ -31,12 +31,18 @@
                                 <state key="normal" image="fastbutton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fastPlayback:" destination="NHX-Wh-3Ss" eventType="touchUpInside" id="z6b-aT-ek1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-7M-kFW">
                                 <rect key="frame" x="275" y="476" width="50" height="50"/>
                                 <state key="normal" image="stopbutton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopPlayback:" destination="NHX-Wh-3Ss" eventType="touchUpInside" id="PKZ-10-f6d"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
