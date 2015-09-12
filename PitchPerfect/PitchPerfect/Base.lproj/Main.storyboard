@@ -26,11 +26,27 @@
                                     <action selector="slowPlayback:" destination="NHX-Wh-3Ss" eventType="touchUpInside" id="UNi-cp-hQ2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdY-dE-wst">
+                                <rect key="frame" x="398" y="147" width="100" height="100"/>
+                                <state key="normal" image="fastbutton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-7M-kFW">
+                                <rect key="frame" x="275" y="476" width="50" height="50"/>
+                                <state key="normal" image="stopbutton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GW0-Lj-BE8" firstAttribute="top" secondItem="7ER-7M-kFW" secondAttribute="bottom" constant="51" id="2jZ-DJ-pt3"/>
+                            <constraint firstAttribute="centerX" secondItem="7ER-7M-kFW" secondAttribute="centerX" id="4h5-jr-Ep6"/>
                             <constraint firstItem="6eG-Xz-j30" firstAttribute="top" secondItem="dv7-qV-Ba9" secondAttribute="bottom" constant="50" id="59Z-WH-gOq"/>
                             <constraint firstItem="6eG-Xz-j30" firstAttribute="leading" secondItem="Voe-Hc-vLe" secondAttribute="leadingMargin" constant="50" id="CfH-IH-t0i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vdY-dE-wst" secondAttribute="trailing" constant="50" id="aoe-Nv-H00"/>
+                            <constraint firstItem="vdY-dE-wst" firstAttribute="top" secondItem="dv7-qV-Ba9" secondAttribute="bottom" constant="50" id="f1e-WO-HK6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -118,6 +134,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fastbutton" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slowbutton" width="100" height="100"/>
         <image name="stopbutton" width="50" height="50"/>
