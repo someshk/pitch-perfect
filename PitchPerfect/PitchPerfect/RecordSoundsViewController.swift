@@ -68,8 +68,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!,
-    successfully flag: Bool){
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool){
         if flag {
             println("Recording completed successfully")
             recordedAudio = RecordedAudio()
@@ -82,6 +81,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             println("Recording wasnt successful")
             recordButton.enabled = true
             stopButton.hidden = true
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "stopRecording") {
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            let data = sender as! RecordedAudio
+            playSoundsVC.receivedAudio = data
         }
     }
     
