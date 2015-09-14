@@ -11,6 +11,10 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    var audioEngine: AVAudioEngine!
+    var audioFile:AVAudioFile!
+    var error:NSError?
+    
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
     
@@ -26,10 +30,11 @@ class PlaySoundsViewController: UIViewController {
 //        } else {
 //            println("file not found")
 //        }
+        audioEngine = AVAudioEngine()
+        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
         
         audioPlayer = AVAudioPlayer( contentsOfURL: receivedAudio.filePathUrl, error: nil)
         audioPlayer.enableRate = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +61,32 @@ class PlaySoundsViewController: UIViewController {
     }
     
     
+    @IBAction func chipmunkPlayback(sender: UIButton) {
+        println("in chipmunkPlayback")
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        var pitchPlayer = AVAudioPlayerNode()
+        var timePitch = AVAudioUnitTimePitch()
+        
+        timePitch.pitch = 1000
+        audioEngine.attachNode(pitchPlayer)
+        audioEngine.attachNode(timePitch)
+        
+        audioEngine.connect(pitchPlayer, to: timePitch, format: nil)
+        
+        audioEngine.connect(timePitch,  to: audioEngine.outputNode, format: nil)
+        
+        pitchPlayer.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(&error)
+        pitchPlayer.play()
+    }
+    
+    
     @IBAction func stopPlayback(sender: UIButton) {
         audioPlayer.stop()
+        audioEngine.stop()
     }
     /*
     // MARK: - Navigation
