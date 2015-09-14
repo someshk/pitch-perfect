@@ -63,6 +63,16 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func chipmunkPlayback(sender: UIButton) {
         println("in chipmunkPlayback")
+        playAudioWithVariablePitch(1000)
+    }
+    
+    
+    @IBAction func darthVaderPlayback(sender: UIButton) {
+        playAudioWithVariablePitch(-1000)
+    }
+    
+    func playAudioWithVariablePitch(pitch: Float){
+        println("in playAudioWithVariablePitch")
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
@@ -70,7 +80,7 @@ class PlaySoundsViewController: UIViewController {
         var pitchPlayer = AVAudioPlayerNode()
         var timePitch = AVAudioUnitTimePitch()
         
-        timePitch.pitch = 1000
+        timePitch.pitch = pitch
         audioEngine.attachNode(pitchPlayer)
         audioEngine.attachNode(timePitch)
         
