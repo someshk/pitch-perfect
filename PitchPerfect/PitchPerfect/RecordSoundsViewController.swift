@@ -22,8 +22,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        recordingLabel.text = "Tap to record"
-        recordingLabel.hidden = false;
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,18 +37,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(sender: UIButton) {
         println("in recordAudio: show the recording label");
         recordingLabel.text = "Recording"
-        recordingLabel.hidden = false
         
         stopButton.hidden = false
         recordButton.enabled = false
-        
-        // TODO: - Record user's voice
+
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        
-//        var currentDateTime = NSDate()
-//        var formatter = NSDateFormatter()
-//        formatter.dateFormat = "ddMMyyyy-HHmmss"
-//        var recordingName = formatter.stringFromDate(currentDateTime)+".wav"
         
         var recordingName = "my_audio.wav"
         var pathArray = [dirPath, recordingName]
@@ -73,10 +64,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool){
         if flag {
             println("Recording completed successfully")
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
-        
+            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
+            
             // Move to the next screen
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {

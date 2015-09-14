@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsc-rp-oeW">
-                                <rect key="frame" x="245" y="390" width="127" height="21"/>
+                                <rect key="frame" x="245" y="358" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -123,7 +123,7 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="gZ2-fm-b8i" secondAttribute="centerX" constant="-8" id="320-Z3-39q"/>
                             <constraint firstItem="gZ2-fm-b8i" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="186" id="EEP-lY-ecq"/>
-                            <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="gZ2-fm-b8i" secondAttribute="bottom" constant="5" id="QA9-6U-YD3"/>
+                            <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="gZ2-fm-b8i" secondAttribute="bottom" constant="8" id="QA9-6U-YD3"/>
                             <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="326" id="Tce-gU-832"/>
                             <constraint firstAttribute="centerX" secondItem="Qsc-rp-oeW" secondAttribute="centerX" constant="-8" id="V9l-CO-Uwy"/>
                             <constraint firstAttribute="centerX" secondItem="Q4Y-hj-d0n" secondAttribute="centerX" constant="-8" id="WQN-Af-oDZ"/>
