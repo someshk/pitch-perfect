@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class PlaySoundsViewController: UIViewController {
+final class PlaySoundsViewController: UIViewController {
 
     var audioEngine: AVAudioEngine!
     var audioFile:AVAudioFile!
@@ -56,6 +56,9 @@ class PlaySoundsViewController: UIViewController {
     
     func playAudioWithVariableRate(rate: Float) {
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
         audioPlayer.currentTime = 0.0
         audioPlayer.rate = rate
         audioPlayer.play()

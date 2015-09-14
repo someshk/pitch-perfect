@@ -9,15 +9,28 @@
 import UIKit
 import AVFoundation
 
-class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+final class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var pauseResumeButton: UIButton!
     
     @IBOutlet weak var recordingLabel: UILabel!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
+    
+    let pauseRecordingIcon = UIImage(named: "pause")
+    let resumeRecordingIcon = UIImage(named: "resume")
+    
+    var recordingButtonState = RecordingButtonState.Normal
+    
+    enum RecordingButtonState : Int {
+        case Normal
+        case Recording
+        case Paused
+        case Stopped
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,36 +43,49 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        stopButton.hidden = true;
-        recordingLabel.text = "Tap to record"
+        changeUIState(RecordingButtonState.Normal);
+        recordingButtonState = RecordingButtonState.Normal;
     }
     
     @IBAction func recordAudio(sender: UIButton) {
         println("in recordAudio: show the recording label");
-        recordingLabel.text = "Recording"
+        changeUIState(RecordingButtonState.Recording);
+        recordingButtonState = RecordingButtonState.Recording
         
-        stopButton.hidden = false
-        recordButton.enabled = false
-
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        
+
         var recordingName = "my_audio.wav"
         var pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        
+
         println(filePath)
-        
+
         var session = AVAudioSession.sharedInstance()
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error:nil)
-        
+
         audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
-        
+
         audioRecorder.delegate = self
-        
+
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
+    
+    @IBAction func pauseResumeRecording(sender: UIButton) {
+        if(recordingButtonState == RecordingButtonState.Recording) {
+            // Pause the recording
+            audioRecorder.pause();
+            changeUIState(RecordingButtonState.Paused);
+            recordingButtonState = RecordingButtonState.Paused
+        } else if(recordingButtonState == RecordingButtonState.Paused) {
+            // Reume the audio recording
+            changeUIState(RecordingButtonState.Recording);
+            recordingButtonState = RecordingButtonState.Recording
+            audioRecorder.record()
+        }
+    }
+    
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool){
         if flag {
@@ -85,12 +111,34 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func stopRecording(sender: UIButton) {
         println("in stopRecording")
-        stopButton.hidden = true
-        recordButton.enabled = true
-        
         audioRecorder.stop()
+        changeUIState(RecordingButtonState.Stopped)
         
         var audioSession = AVAudioSession.sharedInstance()
         audioSession.setActive(false, error: nil)
+    }
+    
+    private func changeUIState(uiState: RecordingButtonState!) {
+        if(uiState == RecordingButtonState.Normal) {
+            stopButton.hidden = true;
+            recordingLabel.text = "Tap to record"
+            recordButton.enabled = true
+            pauseResumeButton.hidden = true
+            pauseResumeButton.setImage(pauseRecordingIcon, forState: UIControlState.Normal)
+        } else if (uiState == RecordingButtonState.Paused) {
+            pauseResumeButton.setImage(resumeRecordingIcon, forState: UIControlState.Normal)
+            recordingLabel.text = "Recording paused"
+        } else if (uiState == RecordingButtonState.Recording) {
+            pauseResumeButton.setImage(pauseRecordingIcon, forState: UIControlState.Normal)
+            recordingLabel.text = "Recording"
+            stopButton.hidden = false
+            pauseResumeButton.hidden = false
+            recordButton.enabled = false
+        } else if (uiState == RecordingButtonState.Stopped) {
+            stopButton.hidden = true
+            pauseResumeButton.hidden = true
+            recordButton.enabled = true
+            pauseResumeButton.setImage(pauseRecordingIcon, forState: UIControlState.Normal)
+        }
     }
 }

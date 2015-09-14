@@ -103,8 +103,23 @@
                                     <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N3J-ug-dLK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsc-rp-oeW">
+                                <rect key="frame" x="245" y="358" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNL-BL-S3E">
+                                <rect key="frame" x="116" y="502" width="50" height="50"/>
+                                <state key="normal" image="pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseResumeRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="l8E-f7-apO"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Y-hj-d0n">
-                                <rect key="frame" x="283" y="514" width="50" height="50"/>
+                                <rect key="frame" x="434" y="502" width="50" height="50"/>
                                 <state key="normal" image="stopbutton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -112,27 +127,26 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jYc-Xn-Xnb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsc-rp-oeW">
-                                <rect key="frame" x="245" y="358" width="127" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="gZ2-fm-b8i" secondAttribute="centerX" constant="-8" id="320-Z3-39q"/>
+                            <constraint firstItem="Q4Y-hj-d0n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="357" id="7Q1-vs-iHE"/>
                             <constraint firstItem="gZ2-fm-b8i" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="186" id="EEP-lY-ecq"/>
                             <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="gZ2-fm-b8i" secondAttribute="bottom" constant="8" id="QA9-6U-YD3"/>
+                            <constraint firstItem="XNL-BL-S3E" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="438" id="S5L-Oa-7It"/>
+                            <constraint firstItem="Q4Y-hj-d0n" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="438" id="T2a-l5-Xf8"/>
                             <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="326" id="Tce-gU-832"/>
                             <constraint firstAttribute="centerX" secondItem="Qsc-rp-oeW" secondAttribute="centerX" constant="-8" id="V9l-CO-Uwy"/>
                             <constraint firstAttribute="centerX" secondItem="Q4Y-hj-d0n" secondAttribute="centerX" constant="-8" id="WQN-Af-oDZ"/>
                             <constraint firstAttribute="centerY" secondItem="Qsc-rp-oeW" secondAttribute="centerY" constant="-100.5" id="X7X-Pc-63d"/>
+                            <constraint firstItem="XNL-BL-S3E" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="100" id="d6f-kx-TkG"/>
                             <constraint firstAttribute="centerX" secondItem="Q4Y-hj-d0n" secondAttribute="centerX" constant="-8" id="dhM-tw-xRU"/>
                             <constraint firstAttribute="centerX" secondItem="Qsc-rp-oeW" secondAttribute="centerX" constant="-8.5" id="hve-gr-oOm"/>
                             <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="318" id="uvi-SY-eyE"/>
                             <constraint firstItem="Q4Y-hj-d0n" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="450" id="vzO-8J-syk"/>
                             <constraint firstItem="Qsc-rp-oeW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="326" id="yns-gg-F0C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q4Y-hj-d0n" secondAttribute="trailing" constant="100" id="yq1-Gy-jLS"/>
                             <constraint firstAttribute="centerY" secondItem="gZ2-fm-b8i" secondAttribute="centerY" id="zvJ-Tg-Oey"/>
                         </constraints>
                         <variation key="default">
@@ -142,12 +156,16 @@
                                 <exclude reference="X7X-Pc-63d"/>
                                 <exclude reference="uvi-SY-eyE"/>
                                 <exclude reference="yns-gg-F0C"/>
+                                <exclude reference="7Q1-vs-iHE"/>
                                 <exclude reference="WQN-Af-oDZ"/>
+                                <exclude reference="dhM-tw-xRU"/>
+                                <exclude reference="vzO-8J-syk"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="7PQ-yx-lMy"/>
                     <connections>
+                        <outlet property="pauseResumeButton" destination="XNL-BL-S3E" id="mba-0D-JVu"/>
                         <outlet property="recordButton" destination="gZ2-fm-b8i" id="nNw-i7-Nua"/>
                         <outlet property="recordingLabel" destination="Qsc-rp-oeW" id="5DI-OY-fLh"/>
                         <outlet property="stopButton" destination="Q4Y-hj-d0n" id="5DT-K5-Ysf"/>
@@ -182,6 +200,7 @@
         <image name="darthvader" width="100" height="100"/>
         <image name="fastbutton" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="pause" width="50" height="50"/>
         <image name="slowbutton" width="100" height="100"/>
         <image name="stopbutton" width="50" height="50"/>
     </resources>
